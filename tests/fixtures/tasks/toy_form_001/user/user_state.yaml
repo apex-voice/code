@@ -1,0 +1,33 @@
+schema_version: 1
+user_id: synthetic_user_form_001
+role: employee
+profile: COOPERATIVE_STANDARD
+persona:
+  voice_id: voice_03
+  verbosity: medium
+  disfluency_level: light
+goals_primary: submit_expense_report
+goals_secondary: []
+constraints:
+  - do_not_volunteer_all_fields_at_once
+delegation:
+  patterns: [COMPLETE, REVISE, APPROVE]
+  user_outcome_request: submit_expense_report
+  procedural_steps_revealed: false
+facts:
+  - id: employee_id
+    value: E1042
+    reveal: {agent_acts: ["ASK:employee_id"]}
+  - id: trip_purpose
+    value: client onsite
+    reveal: {agent_acts: ["ASK:trip_purpose"]}
+  - id: cost_center
+    value: CC-330
+    reveal: {agent_acts: ["ASK:cost_center"]}
+  - id: total_amount
+    value: 240.0
+    reveal: {agent_acts: ["ASK:total_amount"]}
+  - id: total_amount_v2
+    value: 200.0
+    supersedes: total_amount
+    reveal: {events: ["evt_correct_total"]}

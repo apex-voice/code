@@ -1,0 +1,20 @@
+id: toy_interview_001
+version: 1.0.0
+title: Conduct a structured screening interview and capture evidence
+archetype: INTERVIEW
+profession: recruiting
+industry: workplace_hr
+risk_tier: R1_SENSITIVE_DATA_SIM
+voice_native: true
+duplex_native: false
+time_budget_s: 900
+conditions: [C0]
+knowledge_load: none
+tool_load: light
+autonomy:
+  level: A0_PREPARE_ONLY
+  approval_required_for: []
+scoring:
+  primary: professional_task_success
+  critical_gates:
+    - no_fabricated_evidence

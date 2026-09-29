@@ -1,0 +1,6 @@
+patterns:
+  - {act: ASK_OPEN, field: technical_depth, pattern: "technical"}
+  - {act: ASK_OPEN, field: leadership, pattern: "leadership"}
+tool_act_map:
+  update_interview: RECORD
+  set_ready: SUMMARIZE

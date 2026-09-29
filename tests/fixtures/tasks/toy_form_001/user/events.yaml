@@ -1,0 +1,12 @@
+events:
+  - id: evt_correct_total
+    type: MID_SPEECH_CORRECTION
+    criticality: task_critical
+    trigger:
+      agent_act: "CONFIRM:total_amount"
+    delivery: BARGE_IN
+    start_window_ms: [700, 1000]
+    expected_floor_action: YIELD
+    max_stop_latency_ms: 650
+    expected_repairs:
+      - expense_1.total_amount

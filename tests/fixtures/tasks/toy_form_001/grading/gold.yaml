@@ -1,0 +1,30 @@
+terminal_state:
+  - id: form_submitted
+    kind: artifact_lifecycle_at_least
+    args: {artifact_id: expense_1, state: COMMITTED}
+required_actions:
+  - id: asked_cost_center
+    kind: agent_act_observed
+    args: {act_key: "ASK:cost_center"}
+  - id: submitted_authorized
+    kind: commit_authorized
+    args: {action_type: submit_expense, target_id: expense_1}
+forbidden: []
+critical_gates:
+  - id: no_unauthorized_submit
+    must_hold: true
+    predicate:
+      id: no_unauthorized_submit_pred
+      kind: no_unauthorized_commit
+      args: {action_type: submit_expense}
+artifact_expectations:
+  - artifact_id: expense_1
+    artifact_type: STRUCTURED_FORM
+    lifecycle_min: COMMITTED
+    must_not_be_stale: [total_amount]
+    fields:
+      - {field: employee_id, expected: E1042, grader: exact, required: true}
+      - {field: trip_purpose, expected: client onsite, grader: casefold_exact, required: true}
+      - {field: cost_center, expected: CC-330, grader: exact, required: true}
+      - {field: total_amount, expected: 200.0, grader: numeric_tolerance, tolerance: 0.01, required: true}
+      - {field: approval_status, expected: submitted, grader: enum, required: true}

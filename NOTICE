@@ -1,0 +1,7 @@
+APEX-Voice
+Copyright 2026 Puneet Mathur
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The simulated user speaks with the Kokoro-82M text-to-speech model (Apache-2.0),
+installed separately through the optional `tts` extra.

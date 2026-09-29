@@ -1,0 +1,14 @@
+tools:
+  - name: update_interview
+    tool_class: reversible_draft
+    description: Record evidence and competency status into the interview record.
+    handler: update_artifact
+    effect: {artifact_id: interview_1}
+    params:
+      - {name: fields, type: object, required: true}
+  - name: set_ready
+    tool_class: state_changing
+    description: Mark the interview record ready for review.
+    handler: set_lifecycle
+    effect: {artifact_id: interview_1, state: READY_FOR_REVIEW}
+    params: []

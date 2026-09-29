@@ -1,0 +1,30 @@
+tools:
+  - name: update_expense
+    tool_class: reversible_draft
+    description: Draft-write one or more fields on the expense report.
+    handler: update_artifact
+    effect: {artifact_id: expense_1}
+    params:
+      - {name: fields, type: object, required: true}
+    reversible: true
+  - name: request_approval
+    tool_class: user_mediated
+    description: Ask the user to approve submitting the expense report.
+    handler: request_approval
+    commit_action_type: submit_expense
+    commit_target_param: target_id
+    params:
+      - {name: target_id, type: string, required: true}
+  - name: submit_expense
+    tool_class: irreversible_commit
+    description: Irreversibly submit the expense report (requires approval).
+    handler: commit
+    commit_action_type: submit_expense
+    commit_target_param: target_id
+    effect:
+      artifact_id: expense_1
+      set_fields: {approval_status: submitted}
+    reversible: false
+    params:
+      - {name: target_id, type: string, required: true}
+      - {name: artifact_id, type: string, required: true}

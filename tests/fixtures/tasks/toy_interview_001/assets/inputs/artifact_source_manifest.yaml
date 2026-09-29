@@ -1,0 +1,6 @@
+manifests:
+  - artifact_id: interview_1
+    origin: APEX_NATIVE
+    latent_world_id: world_hr_501
+    renderer: {name: evidence_record_renderer, version: "1.0"}
+    seed: 8821

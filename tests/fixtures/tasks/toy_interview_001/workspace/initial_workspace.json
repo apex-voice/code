@@ -1,0 +1,23 @@
+{
+  "artifacts": {
+    "interview_1": {
+      "artifact_type": "EVIDENCE_MATRIX",
+      "lifecycle": "EMPTY",
+      "fields": {"subject_id": "cand_501"},
+      "schema": {
+        "artifact_type": "EVIDENCE_MATRIX",
+        "fields": [
+          {"name": "subject_id", "type": "string", "grader": "exact", "required": true},
+          {"name": "technical_depth.evidence", "type": "array", "grader": "set_f1", "required": true},
+          {"name": "technical_depth.status", "type": "string", "grader": "enum",
+           "enum": ["covered", "partial", "not_covered"], "required": true},
+          {"name": "leadership.evidence", "type": "array", "grader": "set_f1", "required": true},
+          {"name": "leadership.status", "type": "string", "grader": "enum",
+           "enum": ["covered", "partial", "not_covered"], "required": true},
+          {"name": "notes", "type": "string", "grader": "claim_atoms"}
+        ],
+        "lifecycle": ["EMPTY", "PARTIAL", "DRAFT", "READY_FOR_REVIEW"]
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+start: START
+states:
+  START:
+    on_enter:
+      act: OPENING_REQUEST
+      plan_id: open
+      facts: []
+    transitions:
+      - when: {agent_act: "ASK:employee_id"}
+        do: {act: ANSWER, plan_id: ans_emp, facts: [employee_id]}
+        next: S_EMP
+  S_EMP:
+    transitions:
+      - when: {agent_act: "ASK:trip_purpose"}
+        do: {act: ANSWER, plan_id: ans_purpose, facts: [trip_purpose]}
+        next: S_PURPOSE
+  S_PURPOSE:
+    transitions:
+      - when: {agent_act: "ASK:cost_center"}
+        do: {act: ANSWER, plan_id: ans_cc, facts: [cost_center]}
+        next: S_CC
+  S_CC:
+    transitions:
+      - when: {agent_act: "ASK:total_amount"}
+        do: {act: ANSWER, plan_id: ans_total, facts: [total_amount]}
+        next: S_TOTAL
+  S_TOTAL:
+    transitions:
+      - when: {external_event: evt_correct_total}
+        do: {act: CORRECT, plan_id: correct_total, facts: [total_amount_v2],
+             floor_action: BARGE_IN, event_id: evt_correct_total}
+        next: S_CORRECTED
+  S_CORRECTED:
+    transitions:
+      - when: {approval_request: submit_expense}
+        do: {act: APPROVE, plan_id: approve_submit}
+        next: S_DONE
+  S_DONE:
+    terminal: true

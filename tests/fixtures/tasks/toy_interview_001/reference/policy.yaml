@@ -1,0 +1,20 @@
+turns:
+  - text: "Thanks for joining. To start, tell me about your technical background and a project you built."
+  - text: "That's helpful. Now, tell me about your leadership experience."
+    tool_calls:
+      - name: update_interview
+        args:
+          fields:
+            technical_depth.evidence: ["Built a payments service", "Scaled it to 1M users"]
+            technical_depth.status: covered
+  - text: "Great, thank you. That's everything I need for the first round."
+    tool_calls:
+      - name: update_interview
+        args:
+          fields:
+            leadership.evidence: ["Led a team of six engineers"]
+            leadership.status: covered
+            notes: "Strong backend depth; led a six-person team."
+      - name: set_ready
+        args: {}
+    end_call: true

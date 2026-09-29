@@ -1,0 +1,18 @@
+start: START
+states:
+  START:
+    on_enter:
+      act: OPENING_REQUEST
+      plan_id: open
+      facts: []
+    transitions:
+      - when: {agent_act: "ASK_OPEN:technical_depth"}
+        do: {act: ANSWER, plan_id: ans_tech, facts: [tech_evidence]}
+        next: S_TECH
+  S_TECH:
+    transitions:
+      - when: {agent_act: "ASK_OPEN:leadership"}
+        do: {act: ANSWER, plan_id: ans_lead, facts: [lead_evidence]}
+        next: S_LEAD
+  S_LEAD:
+    terminal: true

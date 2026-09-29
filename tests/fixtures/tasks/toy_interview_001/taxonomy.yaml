@@ -1,0 +1,34 @@
+task_id: toy_interview_001
+professional_work:
+  primary_archetype: INTERVIEW
+  secondary_archetypes: [DOCUMENT]
+  economic_function: recruiting
+  industry_setting: workplace_hr
+interaction:
+  delegation_patterns: [DELEGATE]
+  user_profile: COOPERATIVE_STANDARD
+  temporal_dynamics: D0_STATIC
+  duplex_events: []
+workspace:
+  primary_artifact: EVIDENCE_MATRIX
+  secondary_artifacts: []
+  artifact_origin: APEX_NATIVE
+  autonomy_level: A0_PREPARE_ONLY
+knowledge:
+  burden: K0_NONE
+  tool_burden: T1_LIGHT
+grading:
+  modes: [G_EVIDENCE, G_SCHEMA]
+  critical_gates:
+    - no_fabricated_evidence
+conditions: [C0]
+risk_tier: R1_SENSITIVE_DATA_SIM
+difficulty:
+  required_fact_count: 3
+  artifact_field_count: 5
+  duplex_event_count: 0
+user_realization_track: FROZEN_SYNTHETIC
+paper_tags:
+  flagship: false
+  matched_core: false
+  human_audit: false

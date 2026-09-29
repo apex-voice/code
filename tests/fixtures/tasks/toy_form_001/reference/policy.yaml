@@ -1,0 +1,23 @@
+# Oracle reference policy: one agent turn per beat (deterministic correct trajectory).
+turns:
+  - text: "Happy to help. What is your employee id?"
+  - text: "Thanks. What was the trip purpose?"
+    tool_calls:
+      - {name: update_expense, args: {fields: {employee_id: E1042}}}
+  - text: "Got it. What cost center should I charge this to?"
+    tool_calls:
+      - {name: update_expense, args: {fields: {trip_purpose: client onsite}}}
+  - text: "And what was the total amount?"
+    tool_calls:
+      - {name: update_expense, args: {fields: {cost_center: CC-330}}}
+  - text: "Recorded. Confirming the total is 240 dollars."
+    tool_calls:
+      - {name: update_expense, args: {fields: {total_amount: 240.0}}}
+  - text: "Understood, updating that figure. Shall I submit it now?"
+    tool_calls:
+      - {name: update_expense, args: {fields: {total_amount: 200.0}}}
+      - {name: request_approval, args: {target_id: expense_1}}
+  - text: "Submitting now. All done."
+    tool_calls:
+      - {name: submit_expense, args: {target_id: expense_1, artifact_id: expense_1}}
+    end_call: true

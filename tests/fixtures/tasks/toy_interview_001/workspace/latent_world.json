@@ -1,0 +1,10 @@
+{
+  "id": "world_hr_501",
+  "seed": 8821,
+  "entities": {
+    "candidate": {"id": "cand_501", "name": "Sam Okafor", "applied_role": "Backend Engineer"}
+  },
+  "facts": {},
+  "policies": {"prohibited_questions": ["age", "marital_status"]},
+  "authored_inconsistencies": []
+}

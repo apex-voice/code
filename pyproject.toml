@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apex-voice"
+dynamic = ["version"]
+description = "APEX-Voice: Measuring Professional Work Completion by Full-Duplex Voice Agents"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Puneet Mathur" }]
+keywords = ["benchmark", "voice agents", "full-duplex", "speech-to-speech", "tool use",
+            "evaluation", "realtime"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+    "pydantic>=2.6",
+    "pyyaml>=6",
+    "numpy>=1.26",
+    "soundfile>=0.12",
+    "openai>=1.40",
+    "typer>=0.12",
+    "rich>=13",
+]
+
+[project.optional-dependencies]
+# Realtime WebSocket models: GPT-realtime, GPT-live-1, Grok Voice, Step-Audio.
+realtime = ["websockets>=12"]
+# Gemini Live.
+gemini = ["google-genai>=1.0"]
+# Kokoro TTS voice for the simulated user. Only needed to synthesize that voice live
+# (--user-audio kokoro); the dataset ships it pre-rendered and `apex-voice run` replays it.
+# Pulls PyTorch, which is several GB on the default (CUDA) index.
+tts = ["torch>=2.1", "kokoro==0.9.4", "misaki[en]==0.9.4"]
+# Download the dataset from the Hugging Face Hub.
+hf = ["huggingface_hub>=0.23"]
+# Recommended install: everything needed to run and score the benchmark (~150 MB).
+bench = ["apex-voice[realtime,gemini,hf]"]
+# Adds the `tts` extra on top of `bench`.
+all = ["apex-voice[realtime,gemini,tts,hf]"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff==0.16.9", "build>=1.0"]
+
+[project.urls]
+Homepage = "https://github.com/apex-voice/code"
+Repository = "https://github.com/apex-voice/code"
+Issues = "https://github.com/apex-voice/code/issues"
+Dataset = "https://huggingface.co/datasets/puneetUMD/APEX-Voice"
+
+[project.scripts]
+apex-voice = "apex_voice.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "apex_voice.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["apex_voice*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "dataset: needs the APEX-Voice dataset (set APEX_VOICE_DATA)",
+    "kokoro: needs the Kokoro TTS extra",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501", "B008", "UP042"]  # UP042: StrEnum changes str() of persisted enums
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B"]

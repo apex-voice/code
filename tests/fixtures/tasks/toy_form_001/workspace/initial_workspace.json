@@ -1,0 +1,22 @@
+{
+  "artifacts": {
+    "expense_1": {
+      "artifact_type": "STRUCTURED_FORM",
+      "lifecycle": "EMPTY",
+      "fields": {},
+      "schema": {
+        "artifact_type": "STRUCTURED_FORM",
+        "fields": [
+          {"name": "employee_id", "type": "string", "grader": "exact", "required": true},
+          {"name": "trip_purpose", "type": "string", "grader": "casefold_exact", "required": true},
+          {"name": "cost_center", "type": "string", "grader": "exact", "required": true},
+          {"name": "total_amount", "type": "number", "grader": "numeric_tolerance",
+           "required": true, "tolerance": 0.01, "dependents": ["approval_status"]},
+          {"name": "approval_status", "type": "string", "grader": "enum",
+           "enum": ["draft", "submitted"], "required": true}
+        ],
+        "lifecycle": ["EMPTY", "PARTIAL", "DRAFT", "READY_FOR_REVIEW", "APPROVED", "COMMITTED"]
+      }
+    }
+  }
+}

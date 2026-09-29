@@ -1,0 +1,21 @@
+schema_version: 1
+user_id: synthetic_candidate_501
+role: candidate
+profile: COOPERATIVE_STANDARD
+persona:
+  voice_id: voice_07
+  verbosity: medium
+goals_primary: complete_screening_interview
+delegation:
+  patterns: [DELEGATE]
+  user_outcome_request: complete_screening_interview
+  procedural_steps_revealed: false
+constraints:
+  - do_not_recite_the_interview_structure
+facts:
+  - id: tech_evidence
+    value: "Built a payments service; Scaled it to 1M users"
+    reveal: {agent_acts: ["ASK_OPEN:technical_depth"]}
+  - id: lead_evidence
+    value: "Led a team of six engineers"
+    reveal: {agent_acts: ["ASK_OPEN:leadership"]}

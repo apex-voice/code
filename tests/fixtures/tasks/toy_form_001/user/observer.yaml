@@ -1,0 +1,9 @@
+patterns:
+  - {act: ASK, field: employee_id, pattern: "employee id"}
+  - {act: ASK, field: trip_purpose, pattern: "trip purpose"}
+  - {act: ASK, field: cost_center, pattern: "cost center"}
+  - {act: ASK, field: total_amount, pattern: "total amount"}
+  - {act: CONFIRM, field: total_amount, pattern: "confirming the total"}
+tool_act_map:
+  request_approval: REQUEST_APPROVAL
+  submit_expense: COMMIT

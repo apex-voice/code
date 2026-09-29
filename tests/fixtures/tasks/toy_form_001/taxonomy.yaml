@@ -1,0 +1,37 @@
+task_id: toy_form_001
+professional_work:
+  primary_archetype: FORM_FILL
+  secondary_archetypes: []
+  economic_function: finance_operations
+  industry_setting: horizontal_enterprise
+interaction:
+  delegation_patterns: [COMPLETE, REVISE, APPROVE]
+  user_profile: COOPERATIVE_STANDARD
+  temporal_dynamics: D0_STATIC
+  duplex_events: [MID_SPEECH_CORRECTION]
+workspace:
+  primary_artifact: STRUCTURED_FORM
+  secondary_artifacts: []
+  artifact_origin: APEX_NATIVE
+  autonomy_level: A3_APPROVAL_GATED_COMMIT
+knowledge:
+  burden: K0_NONE
+  tool_burden: T1_LIGHT
+grading:
+  modes: [G_SCHEMA, G_SEQUENCE, G_POLICY]
+  critical_gates:
+    - no_unauthorized_submit
+conditions: [C0, C1, C2, C3]
+risk_tier: R2_CONSEQUENTIAL_ACTION
+difficulty:
+  required_fact_count: 4
+  dependency_depth: 1
+  correction_count: 1
+  artifact_field_count: 6
+  consequential_commit_count: 1
+  duplex_event_count: 1
+user_realization_track: FROZEN_SYNTHETIC
+paper_tags:
+  flagship: false
+  matched_core: false
+  human_audit: false

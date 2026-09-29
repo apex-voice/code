@@ -1,0 +1,11 @@
+{
+  "id": "world_expense_001",
+  "seed": 4471,
+  "entities": {
+    "employee": {"id": "E1042", "name": "Jordan Lee", "department": "Sales"},
+    "trip": {"purpose": "client onsite", "cost_center": "CC-330", "total": 200.0}
+  },
+  "facts": {"policy_meal_cap": 100},
+  "policies": {},
+  "authored_inconsistencies": []
+}

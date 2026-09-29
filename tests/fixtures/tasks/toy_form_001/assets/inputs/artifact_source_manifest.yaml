@@ -1,0 +1,6 @@
+manifests:
+  - artifact_id: expense_1
+    origin: APEX_NATIVE
+    latent_world_id: world_expense_001
+    renderer: {name: form_renderer, version: "1.0"}
+    seed: 4471

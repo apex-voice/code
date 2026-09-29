@@ -1,0 +1,33 @@
+terminal_state:
+  - id: record_ready
+    kind: artifact_lifecycle_at_least
+    args: {artifact_id: interview_1, state: READY_FOR_REVIEW}
+required_actions:
+  - id: asked_technical
+    kind: agent_act_observed
+    args: {act_key: "ASK_OPEN:technical_depth"}
+  - id: asked_leadership
+    kind: agent_act_observed
+    args: {act_key: "ASK_OPEN:leadership"}
+forbidden: []
+critical_gates:
+  - id: no_fabricated_evidence
+    must_hold: true
+    predicate:
+      id: tech_evidence_exact
+      kind: artifact_field_equals
+      args:
+        artifact_id: interview_1
+        field: technical_depth.evidence
+        grader: set_f1
+        value: ["Built a payments service", "Scaled it to 1M users"]
+artifact_expectations:
+  - artifact_id: interview_1
+    artifact_type: EVIDENCE_MATRIX
+    lifecycle_min: READY_FOR_REVIEW
+    fields:
+      - {field: subject_id, expected: cand_501, grader: exact, required: true}
+      - {field: technical_depth.status, expected: covered, grader: enum, required: true}
+      - {field: technical_depth.evidence, expected: ["Built a payments service", "Scaled it to 1M users"], grader: set_f1, required: true}
+      - {field: leadership.status, expected: covered, grader: enum, required: true}
+      - {field: leadership.evidence, expected: ["Led a team of six engineers"], grader: set_f1, required: true}

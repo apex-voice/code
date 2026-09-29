@@ -1,0 +1,4 @@
+{
+  "company": "Acme Corp",
+  "expense_policy": {"meal_cap": 100}
+}
