@@ -6,6 +6,8 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml)
 [![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20dataset-APEX--Voice-yellow.svg)](https://huggingface.co/datasets/puneetUMD/APEX-Voice)
 
+Paper Pre-print: https://arxiv.org/abs/2609.34973
+
 Speech-to-speech voice agents are being deployed to do real professional work: enrolling
 benefits, filing claims, screening candidates, negotiating orders. Existing voice benchmarks
 measure transcription, latency, or turn-level dialogue quality. They do not measure whether the
