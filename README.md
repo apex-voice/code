@@ -24,25 +24,6 @@ conversation.
 - **Reliability.** Every task is run 3 times, and we report pass@1, pass@3 and Reliable@3
   (the task passes in all 3 runs).
 
-## Results
-
-Condition C2 (full-duplex speech-to-speech with native tool calling). 120 tasks, 3 repetitions each.
-
-| Model | pass@1 (mean of 3) | pass@3 | Reliable@3 | GS | PC | RA | WA |
-| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Grok-Voice-Think-2.0 | 27.7 (23.1%) | 50 (41.7%) | 6 (5.0%) | 99.4 | 85.3 | 85.8 | 27.8 |
-| GPT-realtime-2.1 | 28.3 (23.6%) | 44 (36.7%) | 13 (10.8%) | 81.1 | 89.2 | 61.4 | 35.3 |
-| Gemini-3.8-Live | 16.3 (13.6%) | 34 (28.3%) | 2 (1.7%) | 84.4 | 74.2 | 49.7 | 24.4 |
-| GPT-live-1 | 10.7 (8.9%) | 19 (15.8%) | 3 (2.5%) | 88.6 | 91.9 | 65.8 | 11.9 |
-| Step-Audio3 | 3.0 (2.5%) | 6 (5.0%) | 1 (0.8%) | 34.4 | 56.4 | 56.9 | 4.2 |
-
-Gate columns are pass rates (%) over all 360 runs. The full report also includes per-repetition
-results, latency, tool-use efficiency, duplex floor control, correction uptake and taxonomy slices.
-All 1,800 scored sessions and the judge-verdict cache are published as
-[`puneetUMD/APEX-Voice-Runs`](https://huggingface.co/datasets/puneetUMD/APEX-Voice-Runs), so
-`apex-voice results` regenerates every table offline, without API keys; see
-[docs/reproducing.md](docs/reproducing.md).
-
 ## Getting started
 
 Everything below is copy-pasteable. Steps 1–4 are fully offline and need **no API keys**, so
@@ -207,11 +188,6 @@ pass@1 / pass@3 / Reliable@3, latency, tool-use efficiency, duplex floor control
 uptake and taxonomy slices. Add `--fast` to skip the artifact re-grading analyses, or name
 campaigns explicitly with `--run gpt-realtime=runs/gpt-realtime`.
 
-> **No API keys at all?** You can still regenerate every published table. The 1,800 scored
-> sessions and the judge-verdict cache are available as
-> [`puneetUMD/APEX-Voice-Runs`](https://huggingface.co/datasets/puneetUMD/APEX-Voice-Runs) —
-> see [docs/reproducing.md](docs/reproducing.md).
-
 ### What a run produces
 
 ```
@@ -308,7 +284,7 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ```bibtex
 @misc{mathur2026apexvoice,
-  title  = {{APEX-Voice}: Measuring Professional Work Completion by Full-Duplex Voice Agents},
+  title  = {{APEX-Voice}: Can Voice Agents Complete Professional Workflows Through Full-Duplex Interaction},
   author = {Mathur, Puneet},
   year   = {2026},
   url    = {https://github.com/apex-voice/code}
