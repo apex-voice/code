@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use APEX-Voice, please cite it as below."
+title: "APEX-Voice: Measuring Professional Work Completion by Full-Duplex Voice Agents"
+authors:
+  - family-names: Mathur
+    given-names: Puneet
+version: 1.0.0
+date-released: 2026-01-01
+license: Apache-2.0
+repository-code: "https://github.com/apex-voice/code"
+keywords:
+  - benchmark
+  - voice agents
+  - full-duplex
+  - speech-to-speech
+  - tool use
+preferred-citation:
+  type: generic
+  title: "APEX-Voice: Measuring Professional Work Completion by Full-Duplex Voice Agents"
+  authors:
+    - family-names: Mathur
+      given-names: Puneet
+  year: 2026
+  url: "https://github.com/apex-voice/code"
